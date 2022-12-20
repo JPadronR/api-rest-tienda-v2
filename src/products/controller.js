@@ -156,22 +156,23 @@ module.exports.ProductsController = {
     deleteProduct: async (req, res) =>
     {
         try {
-            const { params : { id } } = req;     // obtener el id del req
+            //const { params : { id } } = req;     // obtener el id del req
 
-            /*const params = req.body;
-            const nombre = params.nombre;*/
+            const params = req.body;
+            const idProd = params.id;
 
-            let productToDelete = await ProductsService.deleteProduct(id);
+            let productToDelete = await Modelo.findByIdAndDelete(idProd); //ProductsService.deleteProduct(idProd);
 
             if(!productToDelete)
             {
                 Response.error(res, new createError[409]);
             } else
             {
-                if(productToDelete.deletedCount === 1)
+                Response.success(res, 200, `El producto ${nombre} ha sido eliminado`, productToDelete);
+                /*if(productToDelete.deletedCount === 1)
                     Response.success(res, 200, `El producto ${nombre} ha sido eliminado`, productToDelete);
                 else
-                    Response.error(res, new createError[409]);
+                    Response.error(res, new createError[409]);*/
             }
 
         } catch (error) {
