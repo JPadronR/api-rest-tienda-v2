@@ -158,8 +158,8 @@ module.exports.ProductsController = {
         try {
             //const { params : { id } } = req;     // obtener el id del req
 
-            const id = req.body;
-            //const nombre = params.nombre;
+            const body = req.body;
+            const id = body.id;
 
             let productToDelete = await ProductsService.deleteProduct(id);
 
