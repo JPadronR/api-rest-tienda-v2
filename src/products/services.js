@@ -52,7 +52,7 @@ const updateProduct = async (nom, pre, exis, vend, tipo, cp, ubi, desc) => {
 
 const deleteProduct = async (id) => {
     const collection = await Database(COLLECTION);
-    return await collection.deleteOne({nombre: id});
+    return await collection.deleteOne({_id: id});
 }
 
 module.exports.ProductsService = {
