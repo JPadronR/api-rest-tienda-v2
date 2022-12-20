@@ -161,7 +161,7 @@ module.exports.ProductsController = {
             const params = req.body;
             const idProd = params.id;
 
-            let productToDelete = await Modelo.findByIdAndDelete(idProd); //ProductsService.deleteProduct(idProd);
+            let productToDelete = await ProductsService.deleteProduct(idProd);
 
             if(!productToDelete)
             {

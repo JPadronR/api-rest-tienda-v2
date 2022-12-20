@@ -47,7 +47,7 @@ const updateProduct = async (nom, pre, exis, vend, tipo, cp, ubi, desc) => {
             clave_provedor: cp,
             ubicacion: ubi,
             descripcion: desc
-        }}, {upsert: true}); 
+        }}, {upsert: false}); 
 }
 
 const deleteProduct = async (id) => {
