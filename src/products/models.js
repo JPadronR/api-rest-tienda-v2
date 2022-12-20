@@ -2,6 +2,24 @@ const { Int32 } = require("mongodb");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const urlMongoDB = "mongodb+srv://admin:pass1@api-res.huwmnb2.mongodb.net/?retryWrites=true&w=majority"
+
+
+mongoose.connect(urlMongoDB,(err, res) => {
+    try {
+        if(err)
+        {
+            throw err;
+        } else
+        {
+            console.log("CONEXION EXITOSA");
+        }
+
+    } catch (error){
+        console.log(error);
+    }
+})
+
 
 const productSchema = Schema({
     nombre:{
