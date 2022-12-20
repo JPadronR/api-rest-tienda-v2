@@ -168,7 +168,7 @@ module.exports.ProductsController = {
                 Response.error(res, new createError[409]);
             } else
             {
-                Response.success(res, 200, `El producto ${nombre} ha sido eliminado`, productToDelete);
+                Response.success(res, 200, `El producto ${idProd} ha sido eliminado`, productToDelete);
                 /*if(productToDelete.deletedCount === 1)
                     Response.success(res, 200, `El producto ${nombre} ha sido eliminado`, productToDelete);
                 else
