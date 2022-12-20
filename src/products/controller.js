@@ -156,10 +156,10 @@ module.exports.ProductsController = {
     deleteProduct: async (req, res) =>
     {
         try {
-            //const { params : { id } } = req;     // obtener el id del req
+            const { params : { id } } = req;     // obtener el id del req
 
-            const body = req.body;
-            const id = body.id;
+            /*const params = req.body;
+            const nombre = params.nombre;*/
 
             let productToDelete = await ProductsService.deleteProduct(id);
 
@@ -169,7 +169,7 @@ module.exports.ProductsController = {
             } else
             {
                 if(productToDelete.deletedCount === 1)
-                    Response.success(res, 200, `El producto ${id} ha sido eliminado`, productToDelete);
+                    Response.success(res, 200, `El producto ${nombre} ha sido eliminado`, productToDelete);
                 else
                     Response.error(res, new createError[409]);
             }
