@@ -159,20 +159,20 @@ module.exports.ProductsController = {
             //const { params : { id } } = req;     // obtener el id del req
 
             const params = req.body;
-            const idProd = params.id;
+            const nomProd = params.nom;
 
-            let productToDelete = await ProductsService.deleteProduct(idProd);
+            let productToDelete = await ProductsService.deleteProduct(nomProd);
 
             if(!productToDelete)
             {
                 Response.error(res, new createError[409]);
             } else
             {
-                Response.success(res, 200, `El producto ${idProd} ha sido eliminado`, productToDelete);
-                /*if(productToDelete.deletedCount === 1)
-                    Response.success(res, 200, `El producto ${nombre} ha sido eliminado`, productToDelete);
+                //Response.success(res, 200, `El producto ${idProd} ha sido eliminado`, productToDelete);
+                if(productToDelete.deletedCount === 1)
+                    Response.success(res, 200, `El producto ${nomProd} ha sido eliminado`, productToDelete);
                 else
-                    Response.error(res, new createError[409]);*/
+                    Response.error(res, new createError[409]);
             }
 
         } catch (error) {

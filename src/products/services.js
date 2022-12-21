@@ -50,9 +50,9 @@ const updateProduct = async (nom, pre, exis, vend, tipo, cp, ubi, desc) => {
         }}, {upsert: false}); 
 }
 
-const deleteProduct = async (id) => {
+const deleteProduct = async (nom) => {
     const collection = await Database(COLLECTION);
-    return await collection.deleteOne({_id: id});
+    return await collection.deleteOne({nombre: nom});
 }
 
 module.exports.ProductsService = {
