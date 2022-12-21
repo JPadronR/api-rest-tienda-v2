@@ -54,7 +54,7 @@ module.exports.ProductsController = {
                 Response.error(res, new createError.NotFound());
             } else
             {
-                Response.success(res, 200, `Producto ${valor}`, getProduct);
+                Response.success(res, 200, `Producto tipo ${valor}`, getProduct);
             }
 
         } catch (error) {
