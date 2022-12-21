@@ -35,6 +35,11 @@ const getByClave = async (clave) => {
     return await collection.find({ clave_provedor: clave }).toArray();
 }
 
+const tipoExis = async (tipo_Ex) => {
+    const collection = await Database(COLLECTION);
+    return await collection.find({ tipo_exis: tipo_Ex }).toArray();
+};
+
 const createProduct = async (producto) => {
     const collection = await Database(COLLECTION);
     let result = await collection.insertOne(producto);
@@ -72,6 +77,7 @@ module.exports.ProductsService = {
     getByType,
     getByUbication,
     getByClave,
+    tipoExis,
     createProduct,
     generateReport,
     updateProduct,

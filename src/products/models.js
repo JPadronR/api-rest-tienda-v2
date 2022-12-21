@@ -58,6 +58,12 @@ const productSchema = Schema({
     descripcion:{
         type: String,
         require: true
+    },
+    tipo_exis:{
+        type:String,
+        require: true,
+        lowercase: true,
+        default: "alta"
     }
 }, {
     timestamps: true,

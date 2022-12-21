@@ -74,7 +74,7 @@ module.exports.ProductsController = {
         
             if(getProduct[0]!=undefined)
             {
-                Response.success(res, 200, `Producto tipo ${valor}`, getProduct);
+                Response.success(res, 200, `Productos tipo ${valor}`, getProduct);
             } else
             {
                 Response.error(res, new createError.NotFound());
@@ -97,7 +97,7 @@ module.exports.ProductsController = {
 
             if(getProduct[0]!=undefined)
             {
-                Response.success(res, 200, `Producto ubicado en ${ubicacion}`, getProduct);
+                Response.success(res, 200, `Productos ubicados en ${ubicacion}`, getProduct);
             } else
             {
                 Response.error(res, new createError.NotFound());
@@ -118,7 +118,28 @@ module.exports.ProductsController = {
 
             if(getProduct[0]!=undefined)
             {
-                Response.success(res, 200, `Producto con clave ${clave}`, getProduct);
+                Response.success(res, 200, `Productos con clave ${clave}`, getProduct);
+            } else
+            {
+                Response.error(res, new createError.NotFound());
+            }
+
+        } catch (error) {
+            debug(error);
+            Response.error(res);
+        }
+    },
+    getByExistencia: async (req, res) => {
+        try {
+            
+            const params = req.query;
+            const exis = params.existencia;
+            
+            let getProduct = await ProductsService.tipoExis(exis);
+
+            if(getProduct[0]!=undefined)
+            {
+                Response.success(res, 200, `Productos con existencia ${exis}`, getProduct);
             } else
             {
                 Response.error(res, new createError.NotFound());
