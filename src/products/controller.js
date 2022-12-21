@@ -17,6 +17,27 @@ module.exports.ProductsController = {
 
     },
     getProduct: async (req, res) => {
+        try {
+            
+            const params = req.query;
+            const nombre = params.nombre;
+
+            let getProduct = await ProductsService.getProd(nombre);
+
+            if(getProduct[0]!=undefined)
+            {
+                Response.success(res, 200, `Producto ${nombre}`, getProduct);
+            } else
+            {
+                Response.error(res, new createError.NotFound());
+            }
+            
+        } catch (error) {
+            debug(error);
+            Response.error(error);
+        }
+    },
+    getProductByName: async (req, res) => {
 
         try {
             //const { params : { id } } = req;     // obtener el id del req

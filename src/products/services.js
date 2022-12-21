@@ -10,6 +10,11 @@ const getAll = async () => {
     return await collection.find({}).toArray();
 };
 
+const getProd = async (nom) => {
+    const collection = await Database(COLLECTION);
+    return await collection.findOne({ nombre: nom });
+};
+
 const getById = async (id) => {
     const collection = await Database(COLLECTION);
     return await collection.find({ nombre: id }).toArray();
@@ -62,6 +67,7 @@ const deleteProduct = async (nom) => {
 
 module.exports.ProductsService = {
     getAll,
+    getProd,
     getById,
     getByType,
     getByUbication,
