@@ -24,14 +24,14 @@ module.exports.ProductsController = {
 
             let getProduct = await ProductsService.getProd(nombre);
 
-            if(getProduct[0]!=undefined)
-            {
-                Response.success(res, 200, `Producto ${nombre}`, getProduct);
-            } else
+            if(!getProduct)
             {
                 Response.error(res, new createError.NotFound());
+            } else
+            {
+                Response.success(res, 200, `Producto ${nombre}`, getProduct);
             }
-            
+
         } catch (error) {
             debug(error);
             Response.error(error);
