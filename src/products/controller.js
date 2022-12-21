@@ -202,8 +202,9 @@ module.exports.ProductsController = {
             const cp = params.clave_provedor;
             const ubi = params.ubicacion;
             const desc = params.descripcion;
+            const tipo_Ex = params.tipo_exis;
 
-            let newProduct = await ProductsService.updateProduct(nom, pre, exis, vend, tipo, cp, ubi, desc);
+            let newProduct = await ProductsService.updateProduct(nom, pre, exis, vend, tipo, cp, ubi, desc, tipo_Ex);
 
             if(!newProduct)
             {

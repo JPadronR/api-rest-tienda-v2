@@ -51,7 +51,7 @@ const generateReport = async (name, res) => {
     ProductsUtils.excelGenerator(products, name, res)
 }
 
-const updateProduct = async (nom, pre, exis, vend, tipo, cp, ubi, desc) => {
+const updateProduct = async (nom, pre, exis, vend, tipo, cp, ubi, desc, tipo_Ex) => {
     const collection = await Database(COLLECTION);
     return await collection.updateOne({nombre: nom}, {$set:
         {
@@ -61,7 +61,8 @@ const updateProduct = async (nom, pre, exis, vend, tipo, cp, ubi, desc) => {
             tipo: tipo,
             clave_provedor: cp,
             ubicacion: ubi,
-            descripcion: desc
+            descripcion: desc,
+            tipo_exis: tipo_Ex
         }}, {upsert: false}); 
 }
 
