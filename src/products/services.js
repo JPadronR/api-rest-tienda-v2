@@ -12,7 +12,7 @@ const getAll = async () => {
 
 const getById = async (id) => {
     const collection = await Database(COLLECTION);
-    return await collection.find({ nombre: id }).toArray();
+    return await collection.findOne({ nombre: id });
 };
 
 const getByType = async (tipo) => {
@@ -20,14 +20,14 @@ const getByType = async (tipo) => {
     return await collection.find({ tipo: tipo }).toArray();
 };
 
-const getByClave = async (clave) => {
-    const collection = await Database(COLLECTION);
-    return await collection.find({ clave_provedor: clave }).toArray();
-}
-
 const getByUbication = async (ubicacion) => {
     const collection = await Database(COLLECTION);
     return await collection.find({ ubicacion: ubicacion }).toArray();
+};
+
+const getByClave = async (clave) => {
+    const collection = await Database(COLLECTION);
+    return await collection.find({ clave_provedor: clave }).toArray();
 }
 
 const createProduct = async (producto) => {
@@ -64,8 +64,8 @@ module.exports.ProductsService = {
     getAll,
     getById,
     getByType,
-    getByClave,
     getByUbication,
+    getByClave,
     createProduct,
     generateReport,
     updateProduct,
