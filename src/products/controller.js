@@ -45,16 +45,16 @@ module.exports.ProductsController = {
             //const { params : { id } } = req;     // obtener el id del req
 
             const params = req.query;
-            const tipo = params.tipo;
+            const valor = params.valor;
             
-            let product = await ProductsService.getByType(tipo);
+            let getProduct = await ProductsService.getByType(valor);
 
-            if(!product)
+            if(!getProduct)
             {
                 Response.error(res, new createError.NotFound());
             } else
             {
-                Response.success(res, 200, `Producto tipo ${tipo}`, product);
+                Response.success(res, 200, `Producto ${valor}`, getProduct);
             }
 
         } catch (error) {
