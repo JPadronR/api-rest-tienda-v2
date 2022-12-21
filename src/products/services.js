@@ -15,49 +15,15 @@ const getById = async (id) => {
     return await collection.findOne({ nombre: id });
 };
 
-const getByType = async (valor) => {
+const getByType = async (tipo) => {
     const collection = await Database(COLLECTION);
-
-    let product = await collection.find({ nombre: valor }).toArray(); //obtener nombre
-    if(product)
-        return await collection.find({ nombre: valor }).toArray();
-
-    if(!product)
-    {
-        let getProduct = await collection.find({ tipo: valor }).toArray(); //obtener tipo
-        if(getProduct)
-        {
-            product = getProduct;
-            return await collection.find({ tipo: valor }).toArray();
-        }
-        else
-            product=getProduct;
-    }
-
-    if(!product)
-    {
-        let getProduct = await collection.find({ clave_provedor: valor }).toArray(); //obtener clave proveedor
-        if(getProduct)
-        {
-            product = getProduct;
-            return await collection.find({ clave_provedor: valor }).toArray();
-        }
-        else
-            product=getProduct;
-    }
-    
-    if(!product)
-    {
-        let getProduct = await collection.find({ ubicacion: valor }).toArray(); //obtener ubicacion
-        if(getProduct)
-        {
-            product=getProduct;
-            return await collection.find({ ubicacion: valor }).toArray();
-        }
-        else
-            product=getProduct;
-    }
+    return await collection.find({ tipo: tipo }).toArray();
 };
+
+const getByClave = async (clave) => {
+    const collection = await Database(COLLECTION);
+    return await collection.find({ clave_provedor: clave }).toArray();
+}
 
 const getByUbication = async (ubicacion) => {
     const collection = await Database(COLLECTION);
@@ -98,6 +64,7 @@ module.exports.ProductsService = {
     getAll,
     getById,
     getByType,
+    getByClave,
     getByUbication,
     createProduct,
     generateReport,

@@ -51,7 +51,28 @@ module.exports.ProductsController = {
 
             if(!getProduct)
             {
-                Response.error(res, new createError.NotFound());
+                let product = await ProductsService.getById(valor);
+                if(!product)
+                {
+                    let product = await ProductsService.getByClave(valor);
+                    if(!product)
+                    {
+                        let product = await ProductsService.getByUbication(valor);
+                        if(!product)
+                        {
+                            Response.error(res, new createError.NotFound());
+                        } else
+                        {
+                            Response.success(res, 200, `Producto ${valor}`, product);
+                        }
+                    } else
+                    {
+                        Response.success(res, 200, `Producto ${valor}`, product);
+                    }
+                } else
+                {
+                    Response.success(res, 200, `Producto ${valor}`, product);
+                }
             } else
             {
                 Response.success(res, 200, `Producto ${valor}`, getProduct);
