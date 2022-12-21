@@ -26,7 +26,7 @@ module.exports.ProductsController = {
             
             let getProduct = await ProductsService.getById(nombre);
 
-            if(getProduct.length > 1)
+            if(getProduct[0]!=undefined)
             {
                 Response.success(res, 200, `Producto ${nombre}`, getProduct);
             } else
@@ -51,7 +51,7 @@ module.exports.ProductsController = {
             
             //debug(getProduct[0]);
         
-            if(getProduct.length > 1)
+            if(getProduct[0]!=undefined)
             {
                 Response.success(res, 200, `Producto tipo ${valor}`, getProduct);
             } else
@@ -74,7 +74,7 @@ module.exports.ProductsController = {
             
             let product = await ProductsService.getByUbication(ubicacion);
 
-            if(product.length > 1)
+            if(getProduct[0]!=undefined)
             {
                 Response.success(res, 200, `Producto ubicado en ${ubicacion}`, product);
             } else
@@ -95,7 +95,7 @@ module.exports.ProductsController = {
             
             let product = await ProductsService.getByClave(clave);
 
-            if(product.length > 1)
+            if(getProduct[0]!=undefined)
             {
                 Response.success(res, 200, `Producto con clave ${clave}`, product);
             } else
