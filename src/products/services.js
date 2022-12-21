@@ -21,13 +21,31 @@ const getByType = async (valor) => {
     let product = await collection.find({ nombre: valor }).toArray(); //obtener nombre
 
     if(!product)
-        product = await collection.find({ tipo: valor }).toArray(); //obtener tipo
+    {
+        let getProduct = await collection.find({ tipo: valor }).toArray(); //obtener tipo
+        if(getProduct)
+            return getProduct;
+        else
+            product=getProduct;
+    }
 
     if(!product)
-        product = await collection.find({ clave_provedor: valor }).toArray(); //obtener clave proveedor
+    {
+        let getProduct = await collection.find({ clave_provedor: valor }).toArray(); //obtener clave proveedor
+        if(getProduct)
+            return getProduct;
+        else
+            product=getProduct;
+    }
     
     if(!product)
-        product = await collection.find({ ubicacion: valor }) //obtener ubicacion
+    {
+        let getProduct = await collection.find({ ubicacion: valor }) //obtener ubicacion
+        if(getProduct)
+            return getProduct;
+        else
+            product=getProduct;
+    }
     
     return product;
 };
