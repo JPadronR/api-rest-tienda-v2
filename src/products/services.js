@@ -12,7 +12,7 @@ const getAll = async () => {
 
 const getById = async (id) => {
     const collection = await Database(COLLECTION);
-    return await collection.findOne({ nombre: id });
+    return await collection.findOne({ nombre: id }).toArray();
 };
 
 const getByType = async (tipo) => {

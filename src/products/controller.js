@@ -26,12 +26,12 @@ module.exports.ProductsController = {
             
             let getProduct = await ProductsService.getById(nombre);
 
-            if(!getProduct)
-            {
-                Response.error(res, new createError.NotFound());
-            } else
+            if(getProduct.length > 1)
             {
                 Response.success(res, 200, `Producto ${nombre}`, getProduct);
+            } else
+            {
+                Response.error(res, new createError.NotFound());
             }
 
         } catch (error) {
@@ -48,13 +48,15 @@ module.exports.ProductsController = {
             const valor = params.valor;
             
             let getProduct = await ProductsService.getByType(valor);
-
-            if(!getProduct)
-            {
-                Response.error(res, new createError.NotFound());
-            } else
+            
+            //debug(getProduct[0]);
+        
+            if(getProduct.length > 1)
             {
                 Response.success(res, 200, `Producto tipo ${valor}`, getProduct);
+            } else
+            {
+                Response.error(res, new createError.NotFound());
             }
 
         } catch (error) {
@@ -72,12 +74,12 @@ module.exports.ProductsController = {
             
             let product = await ProductsService.getByUbication(ubicacion);
 
-            if(!product)
-            {
-                Response.error(res, new createError.NotFound());
-            } else
+            if(product.length > 1)
             {
                 Response.success(res, 200, `Producto ubicado en ${ubicacion}`, product);
+            } else
+            {
+                Response.error(res, new createError.NotFound());
             }
 
         } catch (error) {
@@ -93,12 +95,12 @@ module.exports.ProductsController = {
             
             let product = await ProductsService.getByClave(clave);
 
-            if(!product)
-            {
-                Response.error(res, new createError.NotFound());
-            } else
+            if(product.length > 1)
             {
                 Response.success(res, 200, `Producto con clave ${clave}`, product);
+            } else
+            {
+                Response.error(res, new createError.NotFound());
             }
 
         } catch (error) {
