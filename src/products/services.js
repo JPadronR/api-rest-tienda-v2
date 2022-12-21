@@ -19,12 +19,17 @@ const getByType = async (valor) => {
     const collection = await Database(COLLECTION);
 
     let product = await collection.find({ nombre: valor }).toArray(); //obtener nombre
+    if(product)
+        return await collection.find({ nombre: valor }).toArray();
 
     if(!product)
     {
         let getProduct = await collection.find({ tipo: valor }).toArray(); //obtener tipo
         if(getProduct)
-            return getProduct;
+        {
+            product = getProduct;
+            return await collection.find({ tipo: valor }).toArray();
+        }
         else
             product=getProduct;
     }
@@ -33,21 +38,25 @@ const getByType = async (valor) => {
     {
         let getProduct = await collection.find({ clave_provedor: valor }).toArray(); //obtener clave proveedor
         if(getProduct)
-            return getProduct;
+        {
+            product = getProduct;
+            return await collection.find({ clave_provedor: valor }).toArray();
+        }
         else
             product=getProduct;
     }
     
     if(!product)
     {
-        let getProduct = await collection.find({ ubicacion: valor }) //obtener ubicacion
+        let getProduct = await collection.find({ ubicacion: valor }).toArray(); //obtener ubicacion
         if(getProduct)
-            return getProduct;
+        {
+            product=getProduct;
+            return await collection.find({ ubicacion: valor }).toArray();
+        }
         else
             product=getProduct;
     }
-    
-    return product;
 };
 
 const getByUbication = async (ubicacion) => {
