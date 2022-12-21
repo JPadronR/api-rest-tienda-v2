@@ -24,14 +24,14 @@ module.exports.ProductsController = {
             const params = req.query;
             const nombre = params.nombre;
             
-            let product = await ProductsService.getById(nombre);
+            let getProduct = await ProductsService.getById(nombre);
 
-            if(!product)
+            if(!getProduct)
             {
                 Response.error(res, new createError.NotFound());
             } else
             {
-                Response.success(res, 200, `Producto ${nombre}`, product);
+                Response.success(res, 200, `Producto ${nombre}`, getProduct);
             }
 
         } catch (error) {

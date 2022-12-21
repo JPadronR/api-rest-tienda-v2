@@ -15,9 +15,21 @@ const getById = async (id) => {
     return await collection.findOne({ nombre: id });
 };
 
-const getByType = async (tipo) => {
+const getByType = async (valor) => {
     const collection = await Database(COLLECTION);
-    return await collection.find({ tipo: tipo }).toArray();
+
+    let product = await collection.find({ nombre: valor }).toArray(); //obtener nombre
+
+    if(!product)
+        product = await collection.find({ tipo: valor }).toArray(); //obtener tipo
+
+    if(!product)
+        product = await collection.find({ clave_provedor: valor }).toArray(); //obtener clave proveedor
+    
+    if(!product)
+        product = await collection.find({ ubicacion: valor }) //obtener ubicacion
+    
+    return product;
 };
 
 const getByUbication = async (ubicacion) => {
