@@ -19,6 +19,10 @@ const userSchema = Schema({
     correo:{
         type: String,
         require: true
+    },
+    rol:{
+        type: String,
+        require: true
     }
 }, {
     timestamps: true,
