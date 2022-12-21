@@ -51,28 +51,7 @@ module.exports.ProductsController = {
 
             if(!getProduct)
             {
-                let product = await ProductsService.getById(valor);
-                if(!product)
-                {
-                    let product = await ProductsService.getByClave(valor);
-                    if(!product)
-                    {
-                        let product = await ProductsService.getByUbication(valor);
-                        if(!product)
-                        {
-                            Response.error(res, new createError.NotFound());
-                        } else
-                        {
-                            Response.success(res, 200, `Producto ${valor}`, product);
-                        }
-                    } else
-                    {
-                        Response.success(res, 200, `Producto ${valor}`, product);
-                    }
-                } else
-                {
-                    Response.success(res, 200, `Producto ${valor}`, product);
-                }
+                Response.error(res, new createError.NotFound());
             } else
             {
                 Response.success(res, 200, `Producto ${valor}`, getProduct);
@@ -99,6 +78,27 @@ module.exports.ProductsController = {
             } else
             {
                 Response.success(res, 200, `Producto ubicado en ${ubicacion}`, product);
+            }
+
+        } catch (error) {
+            debug(error);
+            Response.error(res);
+        }
+    },
+    getProductByClave: async (req, res) => {
+        try {
+            
+            const params = req.query;
+            const clave = params.clave;
+            
+            let product = await ProductsService.getByClave(clave);
+
+            if(!product)
+            {
+                Response.error(res, new createError.NotFound());
+            } else
+            {
+                Response.success(res, 200, `Producto con clave ${clave}`, product);
             }
 
         } catch (error) {

@@ -11,6 +11,7 @@ module.exports.Products = (app) => {
         .get('/getByName', ProductsController.getProduct)  //http://localhost:3000/api/products/getByName?nombre=Arduino
         .get('/getByType', ProductsController.getProductByType) //http://localhost:3000/api/products/getByType?tipo=MCU
         .get('/getByUbication', ProductsController.getProductByUbication)   //http://localhost:3000/api/products/getByUbication?ubicacion=CAP-A
+        .get('/getByClave', ProductsController.getProductByClave)   //http://localhost:3000/api/products/getByClave?clave=504-302
         .put('/update', ProductsController.updateProduct)   //http://localhost:3000/api/products/update
         .delete('/delete', ProductsController.deleteProduct)    //http://localhost:3000/api/products/delete
         .post('/', ProductsController.createProduct)
