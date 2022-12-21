@@ -72,11 +72,11 @@ module.exports.ProductsController = {
             const params = req.query;
             const ubicacion = params.ubicacion;
             
-            let product = await ProductsService.getByUbication(ubicacion);
+            let getProduct = await ProductsService.getByUbication(ubicacion);
 
             if(getProduct[0]!=undefined)
             {
-                Response.success(res, 200, `Producto ubicado en ${ubicacion}`, product);
+                Response.success(res, 200, `Producto ubicado en ${ubicacion}`, getProduct);
             } else
             {
                 Response.error(res, new createError.NotFound());
@@ -93,11 +93,11 @@ module.exports.ProductsController = {
             const params = req.query;
             const clave = params.clave;
             
-            let product = await ProductsService.getByClave(clave);
+            let getProduct = await ProductsService.getByClave(clave);
 
             if(getProduct[0]!=undefined)
             {
-                Response.success(res, 200, `Producto con clave ${clave}`, product);
+                Response.success(res, 200, `Producto con clave ${clave}`, getProduct);
             } else
             {
                 Response.error(res, new createError.NotFound());
