@@ -62,7 +62,6 @@ const productSchema = Schema({
     tipo_exis:{
         type:String,
         require: true,
-        lowercase: true,
         default: "alta"
     }
 }, {
