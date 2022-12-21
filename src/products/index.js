@@ -8,7 +8,7 @@ const router = express.Router();    //Objeto Router para definir rutas especific
 module.exports.Products = (app) => {
     router
         .get('/', ProductsController.getProducts)  //http://localhost:3000/api/products/
-        .get('/report', cors(), ProductsController.generateReport)  //http://localhost:3000/api/products/report
+        .get('/report', ProductsController.generateReport)  //http://localhost:3000/api/products/report
         .get('/getProduct', ProductsController.getProduct)
         .get('/getByName', ProductsController.getProductByName)  //http://localhost:3000/api/products/getByName?nombre=Arduino
         .get('/getByType', ProductsController.getProductByType) //http://localhost:3000/api/products/getByType?tipo=MCU
