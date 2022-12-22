@@ -47,12 +47,12 @@ module.exports.UsersController = {
 
             let getUser = await UsersService.getByName(user);
 
-            if(!getUser)
-            {
-                Response.error(res, new createError.NotFound());
-            } else
+            if(getUser[0]!=undefined)
             {
                 Response.success(res, 200, `Usuario ${user}`, getUser);
+            } else
+            {
+                Response.error(res, new createError.NotFound());
             }
 
         } catch (error) {
@@ -68,12 +68,12 @@ module.exports.UsersController = {
 
             let getUser = await UsersService.getByRol(rol);
 
-            if(!getUser)
-            {
-                Response.error(res, new createError.NotFound());
-            } else
+            if(getUser[0]!=undefined)
             {
                 Response.success(res, 200, `Usuarios con rol ${rol}`, getUser);
+            } else
+            {
+                Response.error(res, new createError.NotFound());
             }
 
         } catch (error) {
