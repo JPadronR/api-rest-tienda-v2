@@ -16,12 +16,12 @@ const getById = async (id) => {
 
 const getByName = async (nombre) => {
     const collection = await Database(COLLECTION);
-    return await collection.findOne({ usuario: nombre });
+    return await collection.find({ usuario: nombre }).toArray();
 };
 
 const getByRol = async (rol) => {
     const collection = await Database(COLLECTION);
-    return await collection.findOne({ rol: rol });
+    return await collection.find({ rol: rol }).toArray();
 }
 
 const addUser = async (user) => {
