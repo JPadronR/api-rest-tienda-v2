@@ -8,6 +8,7 @@ module.exports.usersApi = (app) => {
     router
         .get('/', UsersController.getUsers)  //http://localhost:3000/api/users/
         .get('/getUser', UsersController.getUser)  //http://localhost:3000/api/users/getUser?usuario=JP420
+        .put('/update', UsersController.updateUser)
         .delete('/delete', UsersController.deleteUser)  //http://localhost:3000/api/users/delete
         .post('/', UsersController.addUser)
 

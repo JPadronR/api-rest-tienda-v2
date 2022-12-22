@@ -67,20 +67,25 @@ module.exports.UsersController = {
         }
 
     },
-    /*
-    updateProduct: async (req, res) =>
+    updateUser: async (req, res) =>
     {
         try {
-            const { params : { id } } = req;     // obtener el id del req
+            //const { params : { id } } = req;     // obtener el id del req
 
-            let newProduct = await ProductsService.updateProduct(id);
+            const params = req.body;
+            const nom = params.nombre;
+            const user = params.usuario;
+            const correo = params.correo;
+            const rol = params.rol;
 
-            if(!newProduct)
+            let updateUser = await UsersService.updateUser(nom, user, correo, rol);
+
+            if(!updateUser)
             {
                 Response.error(res, new createError[409]);
             } else
             {
-                Response.success(res, 200, `Se actualizó el producto ${id}`, newProduct);
+                Response.success(res, 200, `Se actualizó el usuario ${user}`, updateUser);
             }
 
         } catch (error) {
@@ -88,7 +93,6 @@ module.exports.UsersController = {
             Response.error(res);
         }
     },
-    */
     deleteUser: async (req, res) =>
     {
         try {

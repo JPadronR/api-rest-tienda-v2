@@ -20,14 +20,16 @@ const addUser = async (user) => {
     return result.insertedId;
 };
 
-/*const updateUser = async (user, pass) => {
+const updateUser = async (nom, user, correo, rol) => {
     const collection = await Database(COLLECTION);
     return await collection.updateOne({usuario: user}, {$set:
         {
+            nombre: nom,
             usuario: user,
-            pass: pass
-        }}, {upsert: true}); 
-}*/
+            correo: correo,
+            rol: rol
+        }}, {upsert: false}); 
+}
 
 const deleteUser = async (id) => {
     const collection = await Database(COLLECTION);
@@ -38,5 +40,6 @@ module.exports.UsersService = {
     getAll,
     getById,
     addUser,
+    updateUser,
     deleteUser
 };
