@@ -73,12 +73,13 @@ module.exports.UsersController = {
             //const { params : { id } } = req;     // obtener el id del req
 
             const params = req.body;
+            const id = params.id;
             const nom = params.nombre;
             const user = params.usuario;
             const correo = params.correo;
             const rol = params.rol;
 
-            let updateUser = await UsersService.updateUser(nom, user, correo, rol);
+            let updateUser = await UsersService.updateUser(id, nom, user, correo, rol);
 
             if(!updateUser)
             {
