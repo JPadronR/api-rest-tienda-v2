@@ -14,6 +14,16 @@ const getById = async (id) => {
     return await collection.findOne({ _id: ObjectId(id) });
 };
 
+const getByName = async (nombre) => {
+    const collection = await Database(COLLECTION);
+    return await collection.findOne({ usuario: nombre });
+};
+
+const getByRol = async (rol) => {
+    const collection = await Database(COLLECTION);
+    return await collection.findOne({ rol: rol });
+}
+
 const addUser = async (user) => {
     const collection = await Database(COLLECTION);
     let result = await collection.insertOne(user);
@@ -39,6 +49,8 @@ const deleteUser = async (id) => {
 module.exports.UsersService = {
     getAll,
     getById,
+    getByName,
+    getByRol,
     addUser,
     updateUser,
     deleteUser

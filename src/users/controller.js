@@ -39,6 +39,48 @@ module.exports.UsersController = {
             Response.error(res);
         }
     },
+    getUserByName: async (req, res) => {
+        try {
+            
+            const params = req.query;
+            const user = params.usuario;
+
+            let getUser = await UsersService.getByName(user);
+
+            if(!getUser)
+            {
+                Response.error(res, new createError.NotFound());
+            } else
+            {
+                Response.success(res, 200, `Usuario ${user}`, getUser);
+            }
+
+        } catch (error) {
+            debug(error);
+            Response.error(res);
+        }
+    },
+    getByRol: async (req, res) => {
+        try {
+            
+            const params = req.query;
+            const rol = params.rol;
+
+            let getUser = await UsersService.getByRol(rol);
+
+            if(!getUser)
+            {
+                Response.error(res, new createError.NotFound());
+            } else
+            {
+                Response.success(res, 200, `Usuarios con rol ${rol}`, getUser);
+            }
+
+        } catch (error) {
+            debug(error);
+            Response.error(error);
+        }
+    },
     addUser: async (req, res) => {
         
         try {
