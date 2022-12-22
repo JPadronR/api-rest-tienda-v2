@@ -25,6 +25,11 @@ const userSchema = Schema({
         type: String,
         require: true,
         lowercase: true
+    },
+    inicio:{
+        type: String,
+        require: false,
+        default: Date.now
     }
 }, {
     timestamps: true,
