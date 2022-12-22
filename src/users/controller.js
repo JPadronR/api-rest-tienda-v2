@@ -56,6 +56,7 @@ module.exports.UsersController = {
                 usuario.usuario = params.usuario;
                 usuario.pass = params.pass;
                 usuario.correo = params.correo;
+                usuario.rol = params.rol;
 
                 const insertedId = await UsersService.addUser(usuario);
                 Response.success(res, 201, 'Usuario agregado', insertedId);
