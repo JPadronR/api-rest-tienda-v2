@@ -26,7 +26,7 @@ module.exports.VentasController = {
 
             let venta = await VentasService.getByUser(user);
 
-            if(!venta)
+            if(venta[0]===undefined)
             {
                 Response.error(res, new createError.NotFound());
             } else
@@ -49,7 +49,7 @@ module.exports.VentasController = {
 
             let venta = await VentasService.getByDate(fecha);
 
-            if(!venta)
+            if(venta[0]===undefined)
             {
                 Response.error(res, new createError.NotFound());
             } else
@@ -72,7 +72,7 @@ module.exports.VentasController = {
 
             let venta = await VentasService.getByProduct(art);
 
-            if(!venta)
+            if(venta[0]===undefined)
             {
                 Response.error(res, new createError.NotFound());
             } else
@@ -95,7 +95,7 @@ module.exports.VentasController = {
 
             let venta = await VentasService.getByPay(pago);
 
-            if(!venta)
+            if(venta[0]===undefined)
             {
                 Response.error(res, new createError.NotFound());
             } else
